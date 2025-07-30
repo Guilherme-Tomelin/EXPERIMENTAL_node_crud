@@ -1,0 +1,20 @@
+// 🔧 Configurações do Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ==============================
+// 👤 Modelos: Usuário
+// ==============================
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  inserted_at  DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
